@@ -68,6 +68,8 @@
     <Compile Include="FrmConf.Designer.cs">
       <DependentUpon>FrmConf.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Messages.cs" />
+    <Compile Include="Model\PersonalFeedUmbria.cs" />
     <Compile Include="NotificadorUmbria.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
