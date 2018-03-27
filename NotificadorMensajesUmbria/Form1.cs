@@ -70,7 +70,10 @@ namespace NotificadorMensajesUmbria
 
                 tbResumen.Text = resultMsg;
                 notifyIcon1.BalloonTipText = resultMsg;
-                notifyIcon1.Text = "Notificador Novedades Umbria:" + Environment.NewLine + resultResumido;
+                string notifyText = "Notificador Novedades Umbria:" + Environment.NewLine + resultResumido;
+                if (notifyText.Length > 64)
+                    notifyText = notifyText.Substring(0, 61) + "...";
+                notifyIcon1.Text = notifyText;
                 notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
                 lblMsgToolStripMenuItem.Text = resultResumido;
 
@@ -223,7 +226,8 @@ namespace NotificadorMensajesUmbria
 
         private void irANovedadesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(Properties.Settings.Default.browser == Constantes.DEFAULT_BROWSER)
+            if(String.IsNullOrEmpty(Properties.Settings.Default.browser ) ||
+                Properties.Settings.Default.browser == Constantes.DEFAULT_BROWSER)
                 System.Diagnostics.Process.Start(Properties.Settings.Default.url);
             else
                 System.Diagnostics.Process.Start(Properties.Settings.Default.browser, Properties.Settings.Default.url);
